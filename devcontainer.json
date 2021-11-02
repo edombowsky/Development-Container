@@ -1,0 +1,149 @@
+{
+    "name": "project-dev",
+    "dockerComposeFile": [
+        "docker-compose.yml"
+    ],
+    "service": "vscode",
+    "runServices": [
+        "vscode"
+    ],
+    "shutdownAction": "stopCompose",
+    // Use 'postCreateCommand' to run commands after the container is created.
+    // "postCreateCommand": "source ~/.windows.sh && go mod download && go mod tidy",
+    "postCreateCommand": "source ~/.windows.sh",
+    "workspaceFolder": "/workspace",
+    // "overrideCommand": "",
+    "extensions": [
+        "golang.go",
+        "eamodio.gitlens", // IDE Git information
+        "mhutchie.git-graph", // View a Git Graph of your repository, and perform Git actions from the graph.
+        "ms-azuretools.vscode-docker", // Docker integration and linting
+        "shardulm94.trailing-spaces", // Show trailing spaces
+        "Gruntfuggly.todo-tree", // Highlights TODO comments
+        "stkb.rewrap", // Rewrap comments after n characters on one line
+        "vscode-icons-team.vscode-icons", // Better file extension icons
+        "redhat.vscode-yaml", // Kubernetes, Drone syntax highlighting
+        "mohsen1.prettify-json", // Prettify JSON data
+        "quicktype.quicktype", // Paste JSON as code
+        "spikespaz.vscode-smoothtype", // Smooth cursor animation
+        "vscode-icons-team.vscode-icons", // Bring icons to Visual Studio Code,
+        "jomeinaster.bracket-peek", // Preview the opening line of code matching the inspected closing bracket
+        "streetsidesoftware.code-spell-checker", // A basic spell checker that works well with camelCase code
+        "editorconfig.editorconfig", // EditorConfig Support for Visual Studio Code
+        "spywhere.guides", // An extension for more guide lines
+        "nachocab.highlight-dodgy-characters", // Highlight all non-unicode characters
+        "wmaurer.change-case", //Quickly change the case of the current selection or current word
+        // ****** Markdown extensions not really necessary ******
+        "bierner.emojisense", // Emoji sense for markdown
+        "davidanson.vscode-markdownlint", // Markdown linting and style checking for Visual Studio Code
+        "yzhang.markdown-all-in-one", // All you need to write Markdown
+        "shuworks.vscode-table-formatter" // Format table syntax of Markdown
+    ],
+    "settings": {
+        "files.eol": "\n",
+        "remote.extensionKind": {
+            "ms-azuretools.vscode-docker": "workspace"
+        },
+        "editor.codeActionsOnSaveTimeout": 3000,
+        "go.useLanguageServer": true,
+        "[go]": {
+            "editor.formatOnSave": true,
+            "editor.codeActionsOnSave": {
+                "source.organizeImports": true,
+            },
+            // Optional: Disable snippets, as they conflict with completion ranking.
+            "editor.snippetSuggestions": "none"
+        },
+        "[go.mod]": {
+            "editor.formatOnSave": true,
+            "editor.codeActionsOnSave": {
+                "source.organizeImports": true,
+            },
+        },
+        "gopls": {
+            "usePlaceholders": false,
+            "staticcheck": true
+        },
+        "go.autocompleteUnimportedPackages": true,
+        "go.gotoSymbol.includeImports": true,
+        "go.gotoSymbol.includeGoroot": true,
+        "go.lintTool": "golangci-lint",
+        // Can be changed to "package" if this uses too much CPU
+        "go.buildOnSave": "workspace",
+        "go.lintOnSave": "workspace",
+        "go.vetOnSave": "workspace",
+        "editor.formatOnSave": true,
+        "go.toolsEnvVars": {
+            "GOFLAGS": "-tags=",
+            "CGO_ENABLED": 1 // for the race detector
+        },
+        "gopls.env": {
+            "GOFLAGS": "-tags="
+        },
+        "go.testEnvVars": {
+            "": "",
+        },
+        "go.testFlags": [
+            "-v",
+            "-race"
+        ],
+        // https://golangci-lint.run/usage/linters/
+        "go.lintFlags": [
+            "--fast",
+            "--enable",
+            "asciicheck",
+            "--enable",
+            "bodyclose",
+            "--enable",
+            "dogsled",
+            "--enable",
+            "dupl",
+            "--enable",
+            "exhaustive",
+            "--enable",
+            "exportloopref",
+            "--enable",
+            "gochecknoglobals",
+            "--enable",
+            "goconst",
+            "--enable",
+            "godocx",
+            "--enable",
+            "goimports",
+            "--enable",
+            "lll",
+            "--enable",
+            "makezero",
+            "--enable",
+            "misspell locale: UK",
+            "--enable",
+            "nestif",
+            "--enable",
+            "paralleltest",
+            "--enable",
+            "prealloc",
+            "--enable",
+            "tparallel",
+            "--enable",
+            "unconvert",
+            "--enable",
+            "unparam",
+            "--enable",
+            "wastedassign",
+            "--enable",
+            "whitespace",
+            "--enable",
+            "wrapcheck",
+            "--enable",
+            "wsl",
+        ],
+        "go.testTimeout": "10s",
+        "go.coverOnSingleTest": true,
+        "go.coverOnSingleTestFile": true,
+        "go.coverOnTestPackage": true
+    },
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    "forwardPorts": [
+        8419
+    ],
+}
